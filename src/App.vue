@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <!-- 路由外链 -->
+    <router-view></router-view>
      <!-- 底部导航 -->
-     <router-view></router-view>
      <v-nav></v-nav>
   </div>
 </template>
@@ -17,7 +18,4 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-v-nav
-  position absolute
-  bottom 0
 </style>
