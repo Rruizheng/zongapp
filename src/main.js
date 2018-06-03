@@ -30,8 +30,6 @@ const router = new VueRouter({
   ]
 });
 
-router.push('/goods');
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

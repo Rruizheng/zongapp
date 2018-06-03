@@ -33,9 +33,9 @@
         </div>
       </div>
       <div class="btng">
-        <div><button class="cancle">取消订单</button></div>
-        <div><button class="change">修改订单</button></div>
-        <div><button class="ask">联系客服</button></div>
+        <div><button class="cancle" @click="cancel()">取消订单</button></div>
+        <div><a href="change.html"><button class="change">修改订单</button></a></div>
+        <div><button class="ask" @click="ask()">联系客服</button></div>
       </div>
     </div>
   </div>
@@ -48,8 +48,13 @@ export default {
 
     };
   },
-  components: {
-
+  methods: {
+    cancel() {
+      this.$emit('cancel');
+    },
+    ask() {
+      this.$emit('ask');
+    }
   }
 };
 </script>
@@ -120,7 +125,7 @@ export default {
   div.btng
     margin-top 0.21rem
     display flex 
-    & > div 
+    & > div,a 
       flex 1
       text-align center
       & > button

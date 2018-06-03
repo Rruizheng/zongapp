@@ -43,9 +43,9 @@
         </div>
       </div>
       <div class="btng">
-        <div><button class="cancle">取消订单</button></div>
+        <div><button class="cancle" @click="cancel()">取消订单</button></div>
         <div><button class="todo">完成服务</button></div>
-        <div><button class="ask">联系客服</button></div>
+        <div><button class="ask" @click="ask()">联系客服</button></div>
       </div>
     </div>
   </div>
@@ -58,8 +58,13 @@ export default {
 
     };
   },
-  components: {
-
+  methods: {
+    cancel() {
+      this.$emit('cancel');
+    },
+    ask() {
+      this.$emit('ask');
+    }
   }
 };
 </script>

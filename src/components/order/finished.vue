@@ -23,7 +23,7 @@
       </div>
       <div class="btng">
           <div><button class="finished">完成订单</button></div>
-          <div><button class="topay"></button></div>
+          <div><a href="topay.html" class="gotopay" ><button class="topay" ></button></a></div>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ export default {
     display flex 
     & > div 
       display inline-block
-      & > button
+      & > button,& > a > button
         position relative
         width 0.88rem
         height 0.28rem

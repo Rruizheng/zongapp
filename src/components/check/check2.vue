@@ -1,5 +1,5 @@
 <template>
-  <div id="check">
+  <div id="check2">
     <div id="checkbox">
         <div class="checkitem">
             <div class="title">服务类型</div>
@@ -13,7 +13,7 @@
         <div class="linebt"></div>
         <div class="checkitem">
             <div class="title">地址</div>
-            <div class="info">杭州市西湖区**路</div>
+            <input type="text" class="info" value="杭州市西湖区**路"/>>
         </div>
         <div class="linebt"></div>
         <div class="checkitem">
@@ -23,7 +23,7 @@
         <div class="linebt"></div>
         <div class="checkitem">
             <div class="title">完成时间</div>
-            <div class="info">2018年5月30日</div>
+            <input class="info" type="date" value="2018年5月30日"/>>
         </div>
     </div>
     <div id="checkbox">
@@ -56,7 +56,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/index.styl"
 
-#check
+#check2
     font-size 0.14rem
     padding-bottom 0.45rem
     & > div
@@ -85,10 +85,17 @@ export default {
             font-size:0.14rem;
             color:#000000;
         .info
+            display inline-block
             position absolute 
             left 1.45rem
             font-family:PingFangSC-Semibold;
             font-size:0.14rem;
             font-weight 900;
             color:#000000;
+        div.info
+            color:#9b9b9b;
+        input.info
+            height 0.25rem
+            line-height 0.25rem
+            margin-top 0.1rem
 </style>

@@ -9,33 +9,33 @@
             <div class="info">
                 <div class="info-item">
                     <span class="tb-title">服务时间</span>
-                    <input type="text" value="2018年4月30日">
+                    <input type="date" value="2018年4月30日" required="required" class="dateBox">
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">具体地址</span>
-                    <input type="text" value="杭州市">
+                    <input type="text" value="杭州市" required="required">
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">联系人&nbsp;</span>
-                    <input type="text" placeholder="输入您的姓名">
+                    <input type="text" placeholder="输入您的姓名" required="required">
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">联系手机</span>
-                    <input type="text" value="188*******">
+                    <input type="text" placeholder="请输入您的手机号" length="11" required="required">
                 </div>
             </div>
             <div class="add">
                 <div class="add-item">
                     <span class="tb-title">面积估算</span>
-                    <input type="text" placeholder="最低16元，建议18元">
+                    <input type="text" placeholder="最低16元，建议18元" required="required">
                 </div>
                 <div class="linebt"></div>
                 <div class="add-item">
                     <span class="tb-title">每亩价格</span>
-                    <input type="text" placeholder="最低16元，建议18元">
+                    <input type="text" placeholder="最低16元，建议18元" required="required">
                 </div>
                 <div class="linebt"></div>
             </div>
@@ -46,23 +46,29 @@
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">实名认证</span>
-                    <input type="text" value="2018年4月30日">
+                    <div class="goto">
+                        <span class="text">去认证</span><span class="icon"></span>
+                    </div>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">土地认证</span>
-                    <input type="text" value="2018年4月30日">
+                    <div class="goto">
+                        <span class="text">去认证</span><span class="icon"></span>
+                    </div>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">职业认证</span>
-                    <input type="text" value="2018年4月30日">
+                    <div class="goto">
+                        <span class="text">去认证</span><span class="icon"></span>
+                    </div>
                 </div>
             </div>
             <div class="total">
                 <span class='text'>定金</span>
                 <div class="sum"><span class="sum">2000</span>元</div>
-                <a class="pay" href="topay.html">去付款</a>
+                <a class="pay" href="topay.html" type="submit">去付款</a>
             </div>
         </div>
     </div>
@@ -126,6 +132,9 @@ export default {
             color:#4a4a4a;
     div.infowrapper
         background #d8d8d8
+        input 
+            height 0.24rem
+            width 1.5rem
         div.info,div.certified,div.add
             width 100%
             margin 0 auto
@@ -143,6 +152,7 @@ export default {
                     display inline-block
                     margin-right 0.52rem
             div.certified-item
+                position relative
                 height 0.37rem
                 line-height 0.37rem
                 padding-left 0.3rem
@@ -152,6 +162,29 @@ export default {
                     color:#000000;
                 &:first-child > span
                     color #9b9b9b
+                div.goto
+                    position absolute
+                    height 0.37rem
+                    line-height 0.37rem
+                    width 0.6rem
+                    right 0.25rem
+                    padding-left 1rem
+                    display inline-block
+                    span 
+                        display inline-block
+                        font-family:PingFangSC-Semibold;
+                        font-size:0.14rem;
+                        font-weight 900
+                        color:#000000;
+                    span.icon
+                        width 0.08rem
+                        height 0.16rem
+                        line-height 0.16rem
+                        margin-left 0.09rem
+                        margin-top 0.1rem
+                        bg-image(right)
+                        background-size cover  
+                        vertical-align top          
         div.add
             padding-bottom 0.14rem
         div.total 
@@ -191,5 +224,7 @@ export default {
                 color #FFF
                 text-align center
                 float right
-            
+input.dateBox
+    border none  
+         
 </style>

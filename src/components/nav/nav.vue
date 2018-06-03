@@ -1,22 +1,10 @@
 <template>
 <div class="tabwrapper">
   <div id="tab">
-    <div class="tab-item">
-      <router-link to="/needs">
-        <span class="icon needs"></span>
-        <span class="text needstext">需求发布</span>
-      </router-link>
-    </div>
-    <div class="tab-item">
-      <router-link to="/order">
-        <span class="icon order"></span>
-        <span class="text ordertext">我的订单</span>
-      </router-link>
-    </div>
-    <div class="tab-item">
-      <router-link to="/user">
-        <span class="icon user"></span>
-        <span class="text usertext">个人信息</span>
+    <div class="tab-item" v-for="(tab, index) in tabs" :key="index" @click="getNow(index)">
+      <router-link :to="'/' + tab.name">
+        <span class="icon" :class="pageNow == index ? tab.name +' now' : tab.name"></span>
+        <span class="text" :class="pageNow == index ? tab.name +'text now' : tab.name + 'text'">{{tab.text}}</span>
       </router-link>
     </div>
   </div>
@@ -27,9 +15,18 @@
 export default {
   data() {
     return {
+      pageNow: '0',
+      tabs: [
+        {name: 'needs', text: '需求发布'},
+        {name: 'order', text: '我的订单'},
+        {name: 'user', text: '个人中心'}
+      ]
     };
   },
-  components: {
+  methods: {
+    getNow(index) {
+      this.pageNow = index;
+    }
   }
 };
 </script>
@@ -63,14 +60,22 @@ export default {
         background-size cover
         &.needs
           bg-image('needs')
+          &.now
+            bg-image('needsnow')
         &.user
           bg-image('user')
+          &.now
+            bg-image('usernow')
         &.order
           bg-image('order')
+          &.now
+            bg-image('ordernow') 
       & > span.text
         display block
         font-family:PingFangSC-Light;
         height 0.14rem
         color #000000
-        text-align center  
+        text-align center 
+        &.now
+          color: #f5a623 
 </style>

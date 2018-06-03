@@ -75,30 +75,30 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       chunks: ['manifest', 'vendor', 'app']
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: config.build.change,
-    //   template: 'change.html',
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true,
-    //     removeAttributeQuotes: true
-    //   },
-    //   chunksSortMode: 'dependency',
-    //   chunks: ['manifest', 'vendor', 'change']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: config.build.signup,
-    //   template: 'signup.html',
-    //   inject: true,
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true,
-    //     removeAttributeQuotes: true
-    //   },
-    //   chunksSortMode: 'dependency',
-    //   chunks: ['manifest', 'vendor', 'signup']
-    // }),
+    new HtmlWebpackPlugin({
+      filename: config.build.change,
+      template: 'change.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      },
+      chunksSortMode: 'dependency',
+      chunks: ['manifest', 'vendor', 'change']
+    }),
+    new HtmlWebpackPlugin({
+      filename: config.build.signup,
+      template: 'signup.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      }, 
+      chunksSortMode: 'dependency',
+      chunks: ['manifest', 'vendor', 'signup']
+    }),
     new HtmlWebpackPlugin({
       filename: config.build.topay,
       template: 'topay.html',

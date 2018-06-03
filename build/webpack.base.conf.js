@@ -24,8 +24,8 @@ module.exports = {
   entry: {
     app: './src/main.js',
     topay: './src/pages/js/topay.js',
-    // change: './src/pages/js/change.js',
-    // signup: './src/pages/js/signup.js'
+    change: './src/pages/js/change.js',
+    signup: './src/pages/js/signup.js'
   },
   output: {
     path: config.build.assetsRoot,
