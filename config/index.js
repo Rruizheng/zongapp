@@ -48,7 +48,10 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     change: path.resolve(__dirname, '../dist/change.html'),
     topay: path.resolve(__dirname, '../dist/topay.html'),
+    cername: path.resolve(__dirname, '../dist/cername.html'),
     signup: path.resolve(__dirname, '../dist/signup.html'),
+    cerjob: path.resolve(__dirname, '../dist/cerjob.html'),
+    cerland: path.resolve(__dirname, '../dist/cerland.html'),
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',

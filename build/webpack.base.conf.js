@@ -25,7 +25,10 @@ module.exports = {
     app: './src/main.js',
     topay: './src/pages/js/topay.js',
     change: './src/pages/js/change.js',
-    signup: './src/pages/js/signup.js'
+    signup: './src/pages/js/signup.js',
+    cername: './src/pages/js/cername.js',
+    cerland: './src/pages/js/cerland.js',
+    cerjob: './src/pages/js/cerjob.js'
   },
   output: {
     path: config.build.assetsRoot,

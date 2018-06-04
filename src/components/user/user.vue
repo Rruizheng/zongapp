@@ -6,23 +6,23 @@
       <div class="linebt"></div>
       <div class="check">
           <div class="title">实名认证</div>
-          <div class="goto">
+          <a class="goto" href="cername.html">
               <span class="text">去认证</span><span class="icon"></span>
-          </div>
+          </a>
       </div>
       <div class="linebt"></div>
       <div class="check">
           <div class="title">土地认证</div>
-          <div class="goto">
+          <a class="goto" href="cerland.html">
               <span class="text">去认证</span><span class="icon"></span>
-          </div>
+          </a>
       </div>
       <div class="linebt"></div>
       <div class="check">
           <div class="title">职业认证</div>
-          <div class="goto">
+          <a class="goto" href="cerjob.html">
               <span class="text">去认证</span><span class="icon"></span>
-          </div>
+          </a>
       </div>
       <div class="linebt"></div>
       <div class="shanchang">
@@ -106,16 +106,31 @@ export default {
             font-weight 900
     div.title
         margin-left 1.6rem
-    div.goto
+    .goto
+        display inline-block
+        position absolute
+        height 0.55rem
+        line-height 0.55rem
+        width 0.7rem
+        right 0.2rem
+        padding-left 0.7rem
+        display inline-block
         span.text
-            margin-left 0.67rem
+            display inline-block
+            font-family:PingFangSC-Semibold;
+            font-size:0.14rem;
+            font-weight 900
+            color:#000000;
         span.icon
+            display inline-block
             width 0.1rem
             height 0.19rem
             margin-left 0.09rem
-            background-size cover
+            line-height 0.19rem
+            margin-top 0.18rem
             bg-image(right)
-            vertical-align top 
+            background-size cover 
+            vertical-align top  
 div.shanchang  
     & > div
         display inline-block

@@ -16,8 +16,8 @@ body, html
 
 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
   .border-1px::after
-    width: 150%
-    height: 150%
+    width: 150% !important
+    height: 150% !important
     -webkit-transform: scale(0.7)
     transform: scale(0.7)
   .border-bottom-1px::after,.border-top-1px::after 
@@ -29,13 +29,31 @@ body, html
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
   .border-1px::after
-    width: 200%
-    height: 200%
+    width: 200% !important
+    height: 200% !important
     -webkit-transform: scale(0.5)
     transform: scale(0.5)
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
   .border-bottom-1px::after,.border-top-1px::after 
     -webkit-transform: scaleY(0.5)
     transform: scaleY(0.5)
   .border-left-1px::after,.border-right-1px::after 
     -webkit-transform: scaleX(0.5)
     transform: scaleX(0.5)
+
+@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+  .border-1px::after
+    width: 300% !important
+    height: 300% !important
+    -webkit-transform: scale(0.33)
+    transform: scale(0.33)
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  .border-bottom-1px::after,.border-top-1px::after 
+    -webkit-transform: scaleY(0.33)
+    transform: scaleY(0.33)
+  .border-left-1px::after,.border-right-1px::after 
+    -webkit-transform: scaleX(0.33)
+    transform: scaleX(0.33)
+

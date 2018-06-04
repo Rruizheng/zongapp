@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="header1">
-      <a class="back" href="/#/needs"></a>
+      <a href="javascript:history.go(-1)" class="back"></a>
       <span class="title">确认订单</span>
   </div>
 </div>
@@ -18,6 +18,7 @@ export default {
 
   }
 };
+
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

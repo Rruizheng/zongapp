@@ -76,6 +76,24 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['signup']
     }), 
+    new HtmlWebpackPlugin({
+      filename: 'cername.html',
+      template: './src/pages/cername.html',
+      inject: true,
+      chunks: ['cername']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'cerjob.html',
+      template: './src/pages/cerjob.html',
+      inject: true,
+      chunks: ['cerjob']
+    }), 
+    new HtmlWebpackPlugin({
+      filename: 'cerland.html',
+      template: './src/pages/cerland.html',
+      inject: true,
+      chunks: ['cerland']
+    }),  
     // copy custom static assets
     new CopyWebpackPlugin([
       {

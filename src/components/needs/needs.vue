@@ -14,7 +14,12 @@
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">具体地址</span>
-                    <input type="text" value="杭州市" required="required">
+                    <citySelect v-model="cityInfo"></citySelect>
+                </div>
+                <div class="linebt"></div>
+                <div class="info-item">
+                    <span class="tb-title">具体地址</span>
+                    <input type="text" placeholder="详细地址" required="required">
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
@@ -46,23 +51,23 @@
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">实名认证</span>
-                    <div class="goto">
+                    <a class="goto" href="cername.html">
                         <span class="text">去认证</span><span class="icon"></span>
-                    </div>
+                    </a>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">土地认证</span>
-                    <div class="goto">
+                    <a class="goto" href="cername.html">
                         <span class="text">去认证</span><span class="icon"></span>
-                    </div>
+                    </a>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">职业认证</span>
-                    <div class="goto">
+                    <a class="goto" href="cername.html">
                         <span class="text">去认证</span><span class="icon"></span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="total">
@@ -77,14 +82,25 @@
 </template>
 
 <script type="text/ecmascript-6">
+import citySelect from '../citySelect/citySelect.vue';
+
 export default {
   data() {
     return {
-
+        cityInfo: ''
     };
   },
   components: {
-
+      'citySelect': citySelect
+  },
+  computed: {
+      cityName() {
+       const names = [];
+       this.cityInfo.province && names.push(this.cityInfo.province.name + ' ');
+       this.cityInfo.city && names.push(this.cityInfo.city.name + ' ');
+       this.cityInfo.block && names.push(this.cityInfo.block.name + ' ');
+       return names.join('');
+     }
   }
 };
 </script>
@@ -98,6 +114,8 @@ export default {
     line-height 2px
     margin 0 auto
     background rgba(7,17,27,0.1)
+input 
+    outline none
 #needs
     width 100%
     height 100%
@@ -149,6 +167,7 @@ export default {
                 line-height 0.40rem
                 padding-left 0.3rem
                 & > span 
+                    width 0.56rem
                     display inline-block
                     margin-right 0.52rem
             div.certified-item
@@ -158,11 +177,13 @@ export default {
                 padding-left 0.3rem
                 & > span 
                     display inline-block
+                    width 0.56rem
+                    height 0.4rem
                     margin-right 0.52rem
                     color:#000000;
                 &:first-child > span
                     color #9b9b9b
-                div.goto
+                a.goto
                     position absolute
                     height 0.37rem
                     line-height 0.37rem

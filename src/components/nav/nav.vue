@@ -1,6 +1,6 @@
 <template>
 <div class="tabwrapper">
-  <div id="tab">
+  <div id="tab" class="border-top-1px">
     <div class="tab-item" v-for="(tab, index) in tabs" :key="index" @click="getNow(index)">
       <router-link :to="'/' + tab.name">
         <span class="icon" :class="pageNow == index ? tab.name +' now' : tab.name"></span>

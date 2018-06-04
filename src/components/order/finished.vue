@@ -1,6 +1,6 @@
 <template>
   <div class="finished">
-    <div class="finished-item">
+    <div class="finished-item border-1px">
        <div class="item1">
         <div class="type">
           <h1>无人机飞防</h1>

@@ -1,9 +1,8 @@
 <template>
 <div>
-  <div class="header2">
+  <div class="headername">
       <a href="javascript:history.go(-1)" class="back"></a>
-      <span class="title">修改订单</span>
-      <span class="sure">确认</span>
+      <span class="title">实名认证</span>
   </div>
 </div>
 </template>
@@ -17,6 +16,9 @@ export default {
   },
   components: {
 
+  },
+  methods: {
+    
   }
 };
 </script>
@@ -24,37 +26,29 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/index.styl"
 
-div.header2
+div.headername
     width 100%
     height 0.6rem
-    background #FFF
+    background rgb(245,166,35)
     text-align center
     font-size 0.18rem
-    box-shadow  0 0 0.08rem 0 rgba(0,0,0,0.5)
+    color #FFF
+    margin-bottom 0.5rem
     span.title
         display inline-block
         height 0.25rem
         line-height 0.25rem
         font-family:PingFangSC-Semibold;
         font-weight 900
-        margin-top 0.28rem
-    & > .back 
+        margin-top 0.24rem
+    & > a 
         display inline-block
         height 0.24rem
-        width 0.14rem
+        width 0.24rem
         background-size cover
-        bg-image(back)
+        background-image url('left.svg')
         position absolute 
-        top 0.28rem
+        top 0.24rem
         left 0.14rem
-    & > .sure 
-        display inline-block
-        position absolute
-        height 0.25rem
-        line-height 0.25rem
-        top 0.28rem
-        right 0.15rem
-        font-family:PingFangSC-Semibold;
-        font-size: 0.18rem;
-        color:#f5a623;
+
 </style>

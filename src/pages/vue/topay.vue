@@ -2,7 +2,7 @@
   <div id="topay">
     <header1></header1>
     <check></check>
-    <div class="total">
+    <div class="total border-top-1px">
       <span class='text'>总价</span>
       <div class="sum"><span class="number">36000</span>元</div>
       <a class="pay" href="topay.html" type="submit">去付款</a>

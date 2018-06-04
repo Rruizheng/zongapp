@@ -1,6 +1,6 @@
 <template>
   <div class="accept">
-    <div class="accept-item">
+    <div class="accept-item border-1px">
         <div class="type">
         <h1>无人机飞防</h1>
         <span>服务类型</span>

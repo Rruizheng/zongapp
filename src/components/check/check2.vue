@@ -12,8 +12,13 @@
         </div>
         <div class="linebt"></div>
         <div class="checkitem">
+            <div class="title">城市</div>
+            <citySelect v-model="cityInfo" class="info"></citySelect>
+        </div>
+        <div class="linebt"></div>
+        <div class="checkitem">
             <div class="title">地址</div>
-            <input type="text" class="info" value="杭州市西湖区**路"/>>
+            <input type="text" class="info" value="杭州市西湖区**路"/>
         </div>
         <div class="linebt"></div>
         <div class="checkitem">
@@ -23,7 +28,7 @@
         <div class="linebt"></div>
         <div class="checkitem">
             <div class="title">完成时间</div>
-            <input class="info" type="date" value="2018年5月30日"/>>
+            <input class="info" type="date" value="2018年5月30日"/>
         </div>
     </div>
     <div id="checkbox">
@@ -41,6 +46,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+import citySelect from '../citySelect/citySelect.vue';
+
 export default {
   data() {
     return {
@@ -48,7 +55,16 @@ export default {
     };
   },
   components: {
-
+    'citySelect': citySelect
+  },
+  computed: {
+      cityName() {
+       const names = [];
+       this.cityInfo.province && names.push(this.cityInfo.province.name + ' ');
+       this.cityInfo.city && names.push(this.cityInfo.city.name + ' ');
+       this.cityInfo.block && names.push(this.cityInfo.block.name + ' ');
+       return names.join('');
+     }
   }
 };
 </script>
