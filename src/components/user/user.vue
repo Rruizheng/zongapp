@@ -7,21 +7,24 @@
       <div class="check">
           <div class="title">实名认证</div>
           <a class="goto" href="cername.html">
-              <span class="text">去认证</span><span class="icon"></span>
+              <span class="text" v-show="!iscer1">去认证</span><span class="icon" v-show="!iscer1"></span>
+              <span class="text done" v-show="iscer1">已认证</span>
           </a>
       </div>
       <div class="linebt"></div>
       <div class="check">
           <div class="title">土地认证</div>
           <a class="goto" href="cerland.html">
-              <span class="text">去认证</span><span class="icon"></span>
+              <span class="text" v-show="!iscer2">去认证</span><span class="icon" v-show="!iscer2"></span>
+              <span class="text done" v-show="iscer2">已认证</span>
           </a>
       </div>
       <div class="linebt"></div>
       <div class="check">
           <div class="title">职业认证</div>
           <a class="goto" href="cerjob.html">
-              <span class="text">去认证</span><span class="icon"></span>
+              <span class="text" v-show="!iscer3">去认证</span><span class="icon" v-show="!iscer3"></span>
+              <span class="text done" v-show="iscer3">已认证</span>
           </a>
       </div>
       <div class="linebt"></div>
@@ -40,7 +43,9 @@
 export default {
   data() {
     return {
-
+        iscer1: true,
+        iscer2: false,
+        iscer3: false
     };
   },
   components: {
@@ -130,7 +135,9 @@ export default {
             margin-top 0.18rem
             bg-image(right)
             background-size cover 
-            vertical-align top  
+            vertical-align top
+        span.done
+            color: #f5a623;  
 div.shanchang  
     & > div
         display inline-block

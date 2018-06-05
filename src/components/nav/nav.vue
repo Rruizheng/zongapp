@@ -60,22 +60,24 @@ export default {
         background-size cover
         &.needs
           bg-image('needs')
-          &.now
-            bg-image('needsnow')
         &.user
           bg-image('user')
-          &.now
-            bg-image('usernow')
         &.order
-          bg-image('order')
-          &.now
-            bg-image('ordernow') 
+          bg-image('order')     
       & > span.text
         display block
         font-family:PingFangSC-Light;
         height 0.14rem
         color #000000
         text-align center 
-        &.now
+      &.active
+        & > span.icon
+          &.needs
+            bg-image('needsnow')
+          &.user
+            bg-image('usernow')
+          &.order
+            bg-image('ordernow') 
+        & > span.text
           color: #f5a623 
 </style>

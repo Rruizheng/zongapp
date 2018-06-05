@@ -14,3 +14,5 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
 // DOMContentLoaded文档加载完成不包含图片资源 onload包含图片资源
 })(document, window);
+
+// localStorage加密

@@ -40,7 +40,7 @@
                 <div class="linebt"></div>
                 <div class="add-item">
                     <span class="tb-title">每亩价格</span>
-                    <input type="text" placeholder="最低16元，建议18元" required="required">
+                    <input type="text" placeholder="如200亩" required="required">
                 </div>
                 <div class="linebt"></div>
             </div>
@@ -52,21 +52,24 @@
                 <div class="certified-item">
                     <span class="tb-title">实名认证</span>
                     <a class="goto" href="cername.html">
-                        <span class="text">去认证</span><span class="icon"></span>
+                        <span class="text" v-show="!iscer1">去认证</span><span class="icon" v-show="!iscer1"></span>
+                        <span class="text done" v-show="iscer1">已认证</span>
                     </a>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">土地认证</span>
                     <a class="goto" href="cername.html">
-                        <span class="text">去认证</span><span class="icon"></span>
+                        <span class="text" v-show="!iscer2">去认证</span><span class="icon" v-show="!iscer2"></span>
+                        <span class="text done" v-show="iscer2">已认证</span>
                     </a>
                 </div>
                 <div class="linebt"></div>
                 <div class="certified-item">
                     <span class="tb-title">职业认证</span>
                     <a class="goto" href="cername.html">
-                        <span class="text">去认证</span><span class="icon"></span>
+                        <span class="text" v-show="!iscer3">去认证</span><span class="icon" v-show="!iscer3"></span>
+                        <span class="text done" v-show="iscer3">已认证</span>
                     </a>
                 </div>
             </div>
@@ -87,7 +90,10 @@ import citySelect from '../citySelect/citySelect.vue';
 export default {
   data() {
     return {
-        cityName: '选择城市'
+        cityName: '选择城市',
+        iscer1: true,
+        iscer2: false,
+        iscer3: false
     };
   },
   mounted: function() {
@@ -97,7 +103,7 @@ export default {
       'citySelect': citySelect
   },
   methods: {
-      getName() {
+     getName() {
         this.cityName = localStorage.getItem('cityName');
      }
   }
@@ -211,7 +217,9 @@ input
                         margin-top 0.1rem
                         bg-image(right)
                         background-size cover  
-                        vertical-align top          
+                        vertical-align top
+                    span.done
+                        color: #f5a623;         
         div.add
             padding-bottom 0.14rem
         div.total 

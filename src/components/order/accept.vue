@@ -8,7 +8,7 @@
       <div class="address">
         <i></i>
         <div class="left">
-          <h1>杭州市</h1> 
+          <div><span class="icon"></span><h1>杭州市</h1></div> 
           <span>西湖区xx路xx号</span>
         </div>
         <div class="right">
@@ -118,6 +118,20 @@ export default {
       & > span 
         font-family:PingFangSC-Semibold;
         font-weight 900
+    div.left 
+      & > div
+        & > span.icon
+          display inline-block
+          width 0.13rem
+          height 0.16rem
+          line-height 0.28rem
+          background-size cover
+          margin-left -0.25rem
+          bg-image(local)
+          vertical-align baseline
+        & > h1
+          display inline-block
+          margin-left 0.1rem
   div.time
     & > div
       display inline-block

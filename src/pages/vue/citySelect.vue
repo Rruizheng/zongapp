@@ -15,7 +15,7 @@
         <!-- 字母列表 -->
         <aside class="letter-aside">
             <ul>
-                <li v-for="(cityList, index) in cityLists" :key="index" @click="naver(cityList.name)" :class="{now:(cityList.name == tipString)}">{{cityList.name}} </li>
+                <li v-for="(cityList, index) in cityLists" :key="index" @click="naver(cityList.name)">{{cityList.name}} </li>
             </ul>
         </aside>
     </div>
