@@ -13,8 +13,8 @@
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
-                    <span class="tb-title">具体地址</span>
-                    <citySelect v-model="cityInfo"></citySelect>
+                    <span class="tb-title">城市</span>
+                    <a href="citySelect.html" class="city">{{cityName}}</a>
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
@@ -87,19 +87,18 @@ import citySelect from '../citySelect/citySelect.vue';
 export default {
   data() {
     return {
-        cityInfo: ''
+        cityName: '选择城市'
     };
+  },
+  mounted: function() {
+      this.getName();
   },
   components: {
       'citySelect': citySelect
   },
-  computed: {
-      cityName() {
-       const names = [];
-       this.cityInfo.province && names.push(this.cityInfo.province.name + ' ');
-       this.cityInfo.city && names.push(this.cityInfo.city.name + ' ');
-       this.cityInfo.block && names.push(this.cityInfo.block.name + ' ');
-       return names.join('');
+  methods: {
+      getName() {
+        this.cityName = localStorage.getItem('cityName');
      }
   }
 };
@@ -170,6 +169,13 @@ input
                     width 0.56rem
                     display inline-block
                     margin-right 0.52rem
+                & > a.city
+                    display inline-block
+                    height 0.24rem
+                    width 1.5rem
+                    color:#000;
+                    font-family:PingFangSC-Regular;
+                    font-size:0.14rem;
             div.certified-item
                 position relative
                 height 0.37rem

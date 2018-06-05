@@ -13,7 +13,7 @@
         <div class="linebt"></div>
         <div class="checkitem">
             <div class="title">城市</div>
-            <citySelect v-model="cityInfo" class="info"></citySelect>
+            <a href="citySelect.html" class="info">{{cityName}}</a>
         </div>
         <div class="linebt"></div>
         <div class="checkitem">
@@ -51,19 +51,18 @@ import citySelect from '../citySelect/citySelect.vue';
 export default {
   data() {
     return {
-
+        cityName: '选择城市'
     };
   },
-  components: {
-    'citySelect': citySelect
+  mounted: function() {
+      this.getName();
   },
-  computed: {
-      cityName() {
-       const names = [];
-       this.cityInfo.province && names.push(this.cityInfo.province.name + ' ');
-       this.cityInfo.city && names.push(this.cityInfo.city.name + ' ');
-       this.cityInfo.block && names.push(this.cityInfo.block.name + ' ');
-       return names.join('');
+  components: {
+      'citySelect': citySelect
+  },
+  methods: {
+      getName() {
+        this.cityName = localStorage.getItem('cityName');
      }
   }
 };
@@ -91,7 +90,7 @@ export default {
         position relative
         height 0.45rem
         line-height 0.45rem
-        & > div
+        & > div,a
             display inline-block
         .title
             margin-left 0.45rem

@@ -94,6 +94,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['cerland']
     }),  
+    new HtmlWebpackPlugin({
+      filename: 'citySelect.html',
+      template: './src/pages/citySelect.html',
+      inject: true,
+      chunks: ['citySelect']
+    }),  
     // copy custom static assets
     new CopyWebpackPlugin([
       {

@@ -28,7 +28,8 @@ module.exports = {
     signup: './src/pages/js/signup.js',
     cername: './src/pages/js/cername.js',
     cerland: './src/pages/js/cerland.js',
-    cerjob: './src/pages/js/cerjob.js'
+    cerjob: './src/pages/js/cerjob.js',
+    citySelect: './src/pages/js/citySelect.js',
   },
   output: {
     path: config.build.assetsRoot,
