@@ -30,14 +30,47 @@
 </template>
 
 <script type="text/ecmascript-6">
+import urldata from '../../data/service.js';
+
 export default {
   data() {
     return {
-
+      urldata,
+      orderlist: '',
+      baseInfo: {
+        userId: '42493337940262912',
+        state: 'completed', // 状态init未开始,receipted已接单,ing进行中,completed已完成       "pageNum":0,                                               
+        pageNum: 0,  
+        pageLength: 10
+      }
     };
   },
   components: {
 
+  },
+  mounted: function() {
+    this.getOrder();
+  },
+  computed: {
+      sendInfo: function() {
+        return JSON.stringify(this.baseInfo);   
+      }
+  },
+  methods: {
+    getOrder() {
+         function checkInfo() {
+           // 检查是否已经认证了 
+         };
+        checkInfo();
+        var that = this; 
+        var paramurl = 'http://' + this.urldata.feiurl + this.urldata.getorder;
+        that.$http.post(paramurl, that.sendInfo, {emulateJSON: true}).then(function(response) {
+            this.orderlist = response.data;
+            console.log(response.data); // promise的then成功之后，将response返回的数据data，保存到aboutData数组里
+        }, function (error) {
+            console.log(error);
+        });
+    }
   }
 };
 </script>

@@ -6,10 +6,11 @@
             <div>无人机飞防</div>
         </div> 
         <div class="infowrapper">
+        <form  @submit="sendInfo()" >
             <div class="info">
                 <div class="info-item">
                     <span class="tb-title">服务时间</span>
-                    <input type="date" value="2018年4月30日" required="required" class="dateBox">
+                    <input type="date" value="2018年4月30日" required="required" class="dateBox" v-model='date'>
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
@@ -19,28 +20,28 @@
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">具体地址</span>
-                    <input type="text" placeholder="详细地址" required="required">
+                    <input type="text" placeholder="详细地址" v-model='baseInfo.recAdd' required>
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">联系人&nbsp;</span>
-                    <input type="text" placeholder="输入您的姓名" required="required">
+                    <input type="text" placeholder="输入您的姓名" v-model='username' required>
                 </div>
                 <div class="linebt"></div>
                 <div class="info-item">
                     <span class="tb-title">联系手机</span>
-                    <input type="text" placeholder="请输入您的手机号" length="11" required="required">
+                    <input type="number" placeholder="请输入您的手机号" v-model='phone' required>
                 </div>
             </div>
             <div class="add">
                 <div class="add-item">
                     <span class="tb-title">面积估算</span>
-                    <input type="text" placeholder="最低16元，建议18元" required="required">
+                    <input type="text" placeholder="如200(亩)" v-model='baseInfo.acreageDou' required>
                 </div>
                 <div class="linebt"></div>
                 <div class="add-item">
                     <span class="tb-title">每亩价格</span>
-                    <input type="text" placeholder="如200亩" required="required">
+                    <input type="number" placeholder="最低16元，建议18元" v-model='baseInfo.priceDou' required>
                 </div>
                 <div class="linebt"></div>
             </div>
@@ -73,39 +74,112 @@
                     </a>
                 </div>
             </div>
+            <input type="submit" value="提交订单" class="submitorder" >
             <div class="total">
                 <span class='text'>定金</span>
                 <div class="sum"><span class="sum">2000</span>元</div>
                 <a class="pay" href="topay.html" type="submit">去付款</a>
             </div>
+        </form>
         </div>
     </div>
-     
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import citySelect from '../citySelect/citySelect.vue';
+import urldata from '../../data/service.js';
 
 export default {
   data() {
     return {
-        cityName: '选择城市',
+        cityName: '城市选择',
         iscer1: true,
         iscer2: false,
-        iscer3: false
+        iscer3: false,
+        urldata,
+        date: '',
+        username: '',
+        phone: '',
+        baseInfo: {
+            acreageDou: '', // 面积
+            priceDou: '', // 单价 
+            cityCode: '', // 城市编码
+            recAdd: '', // 详细地址
+            userId: '42493337940262912', // 用户id
+            startTime: '' // 开始时间
+        }
     };
   },
   mounted: function() {
-      this.getName();
+      this.getData();
   },
   components: {
       'citySelect': citySelect
   },
+  computed: {
+      orderInfo: function() {
+        return JSON.stringify(this.baseInfo);   
+      }
+  },
+  watch: {
+      date: function(newDate, oldDate) {
+          var str = this.date;
+          str = str.replace(/-/g, '/');
+          var date = new Date(str);
+          this.baseInfo.startTime = Number(date);
+          window.localStorage.setItem('date', newDate);
+          console.log(this.baseInfo.startTime);
+      },
+      cityName: function(newCity, oldCity) {
+          this.baseInfo.cityCode = localStorage.getItem('cityId');
+      },
+      username: function (val, oldVal) { 
+        window.localStorage.setItem('username', this.username);
+      },
+      phone: function (val, oldVal) { 
+        window.localStorage.setItem('phone', val);
+      },
+      baseInfo: {
+        handler: function (val, oldVal) { 
+            window.localStorage.setItem('address', val.recAdd);
+            window.localStorage.setItem('priceDou', val.priceDou);
+            window.localStorage.setItem('acreageDou', val.acreageDou);
+        },
+        deep: true
+      }
+  },
   methods: {
-     getName() {
-        this.cityName = localStorage.getItem('cityName');
-     }
+     getData() {
+       if (localStorage.hasOwnProperty('cityName')) { this.cityName = localStorage.getItem('cityName') };
+       if (localStorage.hasOwnProperty('date')) { this.date = localStorage.getItem('date') };
+       if (localStorage.hasOwnProperty('address')) { this.baseInfo.recAdd = localStorage.getItem('address') };
+       if (localStorage.hasOwnProperty('priceDou')) { this.baseInfo.priceDou = localStorage.getItem('priceDou') };
+       if (localStorage.hasOwnProperty('acreageDou')) { this.baseInfo.acreageDou = localStorage.getItem('acreageDou') };
+       if (localStorage.hasOwnProperty('username')) { this.username = localStorage.getItem('username') }
+       if (localStorage.hasOwnProperty('phone')) { this.phone = localStorage.getItem('phone') }
+     },
+     // 生成订单
+     // 订单数据处理
+     test() {
+         console.log(this.orderInfo);
+     },
+     sendInfo() {
+         function checkInfo() {
+           // 检查是否已经认证了  
+         };
+        checkInfo();
+        var that = this; 
+        var paramurl = 'http://' + this.urldata.feiurl + this.urldata.add;
+        that.$http.post(paramurl, that.orderInfo, {emulateJSON: true}).then(function(response) {
+            console.log(response.data); // promise的then成功之后，将response返回的数据data，保存到aboutData数组里
+        }, function (error) {
+            console.log(error);
+        });
+        console.log('111');
+        localStorage.clear();
+        console.log('122');
+    }
   }
 };
 </script>
@@ -113,6 +187,12 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/index.styl"
 // 间隔线宽度为2px
+.submitorder
+   font-size 0.14rem
+   height 0.2rem
+   line-height 0.2rem
+   background orange
+   display block
 .linebt
     width 95%
     height 2px

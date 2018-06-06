@@ -21,7 +21,12 @@ export default {
     return {
       count: '',
       show: true,
-      timer: null
+      timer: null,
+      feiurl: '192.168.1.197:8083',
+      signId: {
+        phone: '',
+        password: ''
+      }
     };
   },
   methods: {
@@ -40,6 +45,18 @@ export default {
           }
         }, 1000);
       }
+    },
+    sendInfo() {
+        var that = this; 
+        var paramurl = 'http://' + this.feiurl + '/api/user/login';
+        that.$http.post(paramurl, that.orderInfo, {emulateJSON: true}).then(function(response) {
+            console.log(response.data); // promise的then成功之后，将response返回的数据data，保存到aboutData数组里
+        }, function (error) {
+            console.log(error);
+        });
+        console.log('111');
+        localStorage.clear();
+        console.log('122');
     }
   }
 };

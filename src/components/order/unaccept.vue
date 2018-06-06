@@ -1,33 +1,33 @@
 <template>
   <div class="unaccept">
-    <div class="unaccept-item border-1px">
+    <div class="unaccept-item border-1px" v-if="orderlist" v-for="(order, index) in orderlist" :key="index">
       <div class="type">
         <h1>无人机飞防</h1>
         <span>服务类型</span>
       </div>
       <div class="address">
         <div class="left">
-          <div><span class="icon"></span><h1>杭州市</h1></div>
-          <span>西湖区xx路xx号</span>
+          <div><span class="icon"></span><h1>{{order.cityName}}</h1></div>
+          <span>{{order.recAdd}}</span>
         </div>
         <div class="right">
           <h4>单号</h4>
-          <span>12345678</span>
+          <span>{{order.id}}</span>
         </div>
       </div>
       <div class="time">
         <div class="date">
-          <h1>10天后</h1>
-          <span>2018年5月30日</span>
+          <h1>{{datelist[index].det}}天后</h1>
+          <span>{{datelist[index].y}}年{{datelist[index].m}}月{{datelist[index].d}}日</span>
         </div>
         <div class="right">
           <div class="scale">
             <h4>面积</h4>
-            <span>2000亩</span>
+            <span>{{order.acreageDou}}亩</span>
           </div>
           <div class="price">
             <h4>单价</h4>
-            <span>18元</span>
+            <span>{{order.priceDou}}元</span>
           </div>
         </div>
       </div>
@@ -41,11 +41,29 @@
 </template>
 
 <script type="text/ecmascript-6">
+import urldata from '../../data/service.js';
+
 export default {
   data() {
     return {
-
+      urldata,
+      orderlist: '',
+      datelist: [],
+      baseInfo: {
+        userId: '42493337940262912',
+        state: 'init',                                             
+        pageNum: 0,  
+        pageLength: 10
+      }
     };
+  },
+  mounted: function() {
+    this.getOrder();
+  },
+  computed: {
+      sendInfo: function() {
+        return JSON.stringify(this.baseInfo);   
+      }
   },
   methods: {
     cancel() {
@@ -53,6 +71,35 @@ export default {
     },
     ask() {
       this.$emit('ask');
+    },
+    getdate(list) {
+      for (var i in list) {
+        var timestamp = list[i].startTime;
+        var date = new Date(timestamp);
+        var now = new Date();
+        var day = {
+          y: date.getFullYear(),
+          m: ((date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)),
+          d: date.getDate(),
+          det: parseInt(((date - now) / (1000 * 60 * 60 * 24)))
+        };
+        this.datelist.push(day);
+      }
+      return this.datelist;  
+    },
+    getOrder() {
+         function checkInfo() {
+           // 检查是否已经认证了 
+         };
+        checkInfo();
+        var that = this; 
+        var paramurl = 'http://' + this.urldata.feiurl + this.urldata.getorder;
+        that.$http.post(paramurl, that.sendInfo, {emulateJSON: true}).then(function(response) {
+            this.orderlist = response.data.data;
+            this.getdate(this.orderlist);
+        }, function (error) {
+            console.log(error);
+        });
     }
   }
 };

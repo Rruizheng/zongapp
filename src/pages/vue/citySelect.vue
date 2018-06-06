@@ -7,7 +7,7 @@
         <div class="cityContent">
             <div v-for="(cityList, index) in cityLists" :key="index">
                 <div class="cityLetter" :id="cityList.name">{{cityList.name}}</div>
-                <div v-for="(city, index) in cityList.cities" class="cityitem" :key="index" @click="getName(city.name)">
+                <div v-for="(city, index) in cityList.cities" class="cityitem" :key="index" @click="getName(city.name, city.cityid)">
                     {{city.name}}
                 </div>
             </div>
@@ -41,7 +41,8 @@ export default {
         cities: cities,
         letter: letter,
         tipString: 'A',
-        cityName: ''
+        cityName: '',
+        cityId: ''
     };
   },
   components: {
@@ -64,9 +65,12 @@ export default {
     //         }
     //     }
     // },
-    getName: function(name) {
+    getName: function(name, id) {
         this.cityName = name;
+        this.cityId = id;
         window.localStorage.setItem('cityName', this.cityName);
+        window.localStorage.setItem('cityId', this.cityId);
+        window.history.go(-1);
     }
   }
 };

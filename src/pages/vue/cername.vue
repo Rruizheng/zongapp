@@ -1,32 +1,35 @@
 <template>
   <div id="cername">
         <headername></headername>
+        <form  @submit="sendData()">
         <div class="item border-1px">
-            <input type="text" placeholder="输入真实姓名" class="border-1px">
+            <input type="text" placeholder="输入真实姓名" class="border-1px" v-model="baseInfo.name" required>
         </div>
         <div class="item border-1px" >
-            <input type="number" name="idcard"  placeholder="输入身份证号">
+            <input type="number" name="idcard"  placeholder="输入身份证号" v-model="baseInfo.idNo" required>
         </div>
         <div class="border-1px addpic">
-            <input type="file" id="file" accept="image/*" class="addfile" @change="getFile($event,'zheng')">
+            <input type="file" id="file" accept="image/*" class="addfile" @change="getFile($event,'zheng')" required>
             <img :src='zhengsrc' class="preview" :style="{opacity: zhengop}"/>
             <p>添加图片</p>
             <p>身份证正面</p>
         </div>
         <div class="border-1px addpic">
-            <input type="file" id="file" accept="image/*" class="addfile" @change="getFile($event,'fan')">
+            <input type="file" id="file" accept="image/*" class="addfile" @change="getFile($event,'fan')" required>
             <img :src='fansrc' class="preview" :style="{opacity: fanop}"/>
             <p>添加图片</p>
             <p>身份证背面</p>
         </div>
         <p class="sure">
-            <button>确认</button>
+            <button type="submit">确认</button>
         </p>
+        </form>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import headername from '../../components/header/headername.vue';
+import urldata from '../../data/service.js';
 
 export default {
   data() {
@@ -34,11 +37,24 @@ export default {
         zhengsrc: '',
         fansrc: '',
         zhengop: 0,
-        fanop: 0
+        fanop: 0,
+        urldata,
+        baseInfo: {
+            name: '', // 姓名
+            idNo: '', // 身份证号
+            idCardCons: '',
+            idCardPros: '',
+            userId: '41080820974223360'
+        }
     };
   },
   components: {
       'headername': headername
+  },
+  computed: {
+      sendInfo: function() {
+        return JSON.stringify(this.baseInfo);   
+      }
   },
   methods: {
       getFile (e, name) {
@@ -53,6 +69,16 @@ export default {
           _this[isrc] = this.result;
           _this[iop] = 1;
         };
+        name === 'zheng' ? (this.baseInfo.idCardCons = window.URL.createObjectURL(files)) : (this.baseInfo.idCardPros = window.URL.createObjectURL(files));
+      },
+      sendData () {
+        var that = this; 
+        var paramurl = 'http://' + this.urldata.feiurl + this.urldata.username;
+        that.$http.post(paramurl, that.sendInfo, {emulateJSON: true}).then(function(response) {
+            console.log(response.data);
+        }, function (error) {
+            console.log(error);
+        });
       }
   }
 };
