@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -52,10 +52,11 @@ module.exports = {
     signup: path.resolve(__dirname, '../dist/signup.html'),
     cerjob: path.resolve(__dirname, '../dist/cerjob.html'),
     cerland: path.resolve(__dirname, '../dist/cerland.html'),
+    citySelect: path.resolve(__dirname, '../dist/citySelect.html'),
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

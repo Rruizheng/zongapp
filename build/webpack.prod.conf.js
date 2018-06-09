@@ -77,7 +77,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.change,
-      template: 'change.html',
+      template: './src/pages/change.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -89,7 +89,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.signup,
-      template: 'signup.html',
+      template: './src/pages/signup.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -101,7 +101,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.topay,
-      template: 'topay.html',
+      template: './src/pages/topay.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -113,7 +113,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.cername,
-      template: 'cername.html',
+      template: './src/pages/cername.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -125,7 +125,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.cerjob,
-      template: 'cerjob.html',
+      template: './src/pages/cerjob.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -137,7 +137,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.cerland,
-      template: 'cerland.html',
+      template: './src/pages/cerland.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -149,7 +149,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.citySelect,
-      template: 'citySelect.html',
+      template: './src/pages/citySelect.html',
       inject: true,
       minify: {
         removeComments: true,
